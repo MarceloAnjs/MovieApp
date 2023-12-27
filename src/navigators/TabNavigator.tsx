@@ -60,8 +60,8 @@ const TabNavigator = () => {
                   focused ? { backgroundColor: COLORS.Orange } : {},
                 ]}
               >
-                <EvilIcons
-                  name="search"
+                <MaterialCommunityIcons
+                  name="movie-search-outline"
                   size={FONTSIZE.size_30}
                   color={COLORS.White}
                 />
