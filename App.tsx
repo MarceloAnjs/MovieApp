@@ -4,6 +4,8 @@ import TabNavigator from "./src/navigators/TabNavigator";
 import { Logs } from "expo";
 import { LogBox } from "react-native";
 import MovieDetailsScreen from "./src/screens/MovieDetails";
+import SeatBookingScreen from "./src/screens/SeatBooking";
+import { useEffect } from "react";
 
 const Stack = createNativeStackNavigator();
 
@@ -23,6 +25,11 @@ export default function App() {
           name="MovieDetails"
           component={MovieDetailsScreen}
           options={{ animation: "slide_from_right" }}
+        />
+        <Stack.Screen
+          name="SeatBooking"
+          component={SeatBookingScreen}
+          options={{ animation: "slide_from_bottom" }}
         />
       </Stack.Navigator>
     </NavigationContainer>
