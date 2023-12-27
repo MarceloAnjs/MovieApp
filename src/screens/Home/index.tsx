@@ -9,14 +9,13 @@ import {
 } from "react-native";
 import { COLORS, SPACING } from "../../theme/theme";
 import { styles } from "./styles";
-
 import useHomeViewModel from "./index.model";
 import InputHeader from "../../components/InputHeader";
 import CategoryHeader from "../../components/CategoryHeader";
 import MovieCard from "../../components/MovieCard";
 import SubMovieCard from "../../components/SubMovieCard";
 
-const { width, height } = Dimensions.get("window");
+const { width } = Dimensions.get("window");
 
 const HomeScreen = ({ navigation }: any) => {
   const {
