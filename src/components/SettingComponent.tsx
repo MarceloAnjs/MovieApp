@@ -1,13 +1,13 @@
-import * as React from 'react';
-import {Text, View, StyleSheet} from 'react-native';
-import {COLORS, FONTFAMILY, FONTSIZE, SPACING} from '../theme/theme';
-import CustomIcon from './CustomIcon';
+import * as React from "react";
+import { Text, View, StyleSheet } from "react-native";
+import { COLORS, FONTFAMILY, FONTSIZE, SPACING } from "../theme/theme";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const SettingComponent = (props: any) => {
   return (
     <View style={styles.container}>
       <View>
-        <CustomIcon name={props.icon} style={styles.iconStyle} />
+        <MaterialCommunityIcons name={props.icon} style={styles.iconStyle} />
       </View>
       <View style={styles.settingContainer}>
         <Text style={styles.title}>{props.heading}</Text>
@@ -15,7 +15,7 @@ const SettingComponent = (props: any) => {
         <Text style={styles.subtitle}>{props.subtitle}</Text>
       </View>
       <View style={styles.iconBG}>
-        <CustomIcon name={'arrow-right'} style={styles.iconStyle} />
+        <MaterialCommunityIcons name="chevron-right" style={styles.iconStyle} />
       </View>
     </View>
   );
@@ -25,7 +25,7 @@ export default SettingComponent;
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
+    flexDirection: "row",
     paddingVertical: SPACING.space_20,
   },
   settingContainer: {
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: SPACING.space_20,
   },
   iconBG: {
-    justifyContent: 'center',
+    justifyContent: "center",
   },
   title: {
     fontFamily: FONTFAMILY.poppins_medium,

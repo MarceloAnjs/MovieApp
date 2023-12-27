@@ -9,6 +9,7 @@ import SearchScreen from "../screens/Search";
 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import TicketScreen from "../screens/Ticket";
+import UserAccountScreen from "../screens/UserAccount";
 
 const Tab = createBottomTabNavigator();
 
@@ -95,7 +96,7 @@ const TabNavigator = () => {
           },
         }}
       />
-      {/*
+
       <Tab.Screen
         name="User"
         component={UserAccountScreen}
@@ -109,16 +110,16 @@ const TabNavigator = () => {
                   focused ? { backgroundColor: COLORS.Orange } : {},
                 ]}
               >
-                <CustomIcon
-                  name="user"
-                  color={COLORS.White}
+                <MaterialCommunityIcons
+                  name="account-outline"
                   size={FONTSIZE.size_30}
+                  color={COLORS.White}
                 />
               </View>
             );
           },
         }}
-      /> */}
+      />
     </Tab.Navigator>
   );
 };
