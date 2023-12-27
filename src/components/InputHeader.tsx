@@ -1,39 +1,36 @@
-import React, {useState} from 'react';
+import React, { useState } from "react";
 import {
   Text,
   View,
   StyleSheet,
   TextInput,
   TouchableOpacity,
-} from 'react-native';
+} from "react-native";
 import {
   BORDERRADIUS,
   COLORS,
   FONTFAMILY,
   FONTSIZE,
   SPACING,
-} from '../theme/theme';
-import CustomIcon from './CustomIcon';
+} from "../theme/theme";
+import { EvilIcons } from "@expo/vector-icons";
 
 const InputHeader = (props: any) => {
-  const [searchText, setSearchText] = useState<string>('');
+  const [searchText, setSearchText] = useState<string>("");
   return (
     <View style={styles.inputBox}>
       <TextInput
         style={styles.textInput}
-        onChangeText={textInput => setSearchText(textInput)}
+        onChangeText={(textInput) => setSearchText(textInput)}
         value={searchText}
         placeholder="Search your Movies..."
         placeholderTextColor={COLORS.WhiteRGBA32}
       />
       <TouchableOpacity
         style={styles.searchIcon}
-        onPress={() => props.searchFunction(searchText)}>
-        <CustomIcon
-          name="search"
-          color={COLORS.Orange}
-          size={FONTSIZE.size_20}
-        />
+        onPress={() => props.searchFunction(searchText)}
+      >
+        <EvilIcons name="search" size={FONTSIZE.size_30} color={COLORS.White} />
       </TouchableOpacity>
     </View>
   );
@@ -41,23 +38,23 @@ const InputHeader = (props: any) => {
 
 const styles = StyleSheet.create({
   inputBox: {
-    display: 'flex',
+    display: "flex",
     paddingVertical: SPACING.space_8,
     paddingHorizontal: SPACING.space_24,
     borderWidth: 2,
     borderColor: COLORS.WhiteRGBA15,
     borderRadius: BORDERRADIUS.radius_25,
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   textInput: {
-    width: '90%',
+    width: "90%",
     fontFamily: FONTFAMILY.poppins_regular,
     fontSize: FONTSIZE.size_14,
     color: COLORS.White,
   },
   searchIcon: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     padding: SPACING.space_10,
   },
 });

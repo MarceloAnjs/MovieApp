@@ -1,10 +1,13 @@
 import React from "react";
 
 import { COLORS, FONTSIZE, SPACING } from "../theme/theme";
-import CustomIcon from "../components/CustomIcon";
+
 import { View, StyleSheet } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "../screens/Home";
+import SearchScreen from "../screens/Search";
+import { EvilIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const Tab = createBottomTabNavigator();
 
@@ -34,17 +37,17 @@ const TabNavigator = () => {
                   focused ? { backgroundColor: COLORS.Orange } : {},
                 ]}
               >
-                <CustomIcon
-                  name="video"
-                  color={COLORS.White}
+                <MaterialCommunityIcons
+                  name="movie-open-outline"
                   size={FONTSIZE.size_30}
+                  color={COLORS.White}
                 />
               </View>
             );
           },
         }}
       />
-      {/* <Tab.Screen
+      <Tab.Screen
         name="Search"
         component={SearchScreen}
         options={{
@@ -57,17 +60,17 @@ const TabNavigator = () => {
                   focused ? { backgroundColor: COLORS.Orange } : {},
                 ]}
               >
-                <CustomIcon
+                <EvilIcons
                   name="search"
-                  color={COLORS.White}
                   size={FONTSIZE.size_30}
+                  color={COLORS.White}
                 />
               </View>
             );
           },
         }}
       />
-      <Tab.Screen
+      {/* <Tab.Screen
         name="Ticket"
         component={TicketScreen}
         options={{
