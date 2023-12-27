@@ -6,8 +6,9 @@ import { View, StyleSheet } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "../screens/Home";
 import SearchScreen from "../screens/Search";
-import { EvilIcons } from "@expo/vector-icons";
+
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import TicketScreen from "../screens/Ticket";
 
 const Tab = createBottomTabNavigator();
 
@@ -47,6 +48,7 @@ const TabNavigator = () => {
           },
         }}
       />
+
       <Tab.Screen
         name="Search"
         component={SearchScreen}
@@ -70,7 +72,7 @@ const TabNavigator = () => {
           },
         }}
       />
-      {/* <Tab.Screen
+      <Tab.Screen
         name="Ticket"
         component={TicketScreen}
         options={{
@@ -83,16 +85,17 @@ const TabNavigator = () => {
                   focused ? { backgroundColor: COLORS.Orange } : {},
                 ]}
               >
-                <CustomIcon
-                  name="ticket"
-                  color={COLORS.White}
+                <MaterialCommunityIcons
+                  name="ticket-confirmation-outline"
                   size={FONTSIZE.size_30}
+                  color={COLORS.White}
                 />
               </View>
             );
           },
         }}
       />
+      {/*
       <Tab.Screen
         name="User"
         component={UserAccountScreen}

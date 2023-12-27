@@ -1,19 +1,19 @@
-import * as React from 'react';
-import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
-import CustomIcon from './CustomIcon';
+import * as React from "react";
+import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import {
   BORDERRADIUS,
   COLORS,
   FONTFAMILY,
   FONTSIZE,
   SPACING,
-} from '../theme/theme';
+} from "../theme/theme";
 
 const AppHeader = (props: any) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.iconBG} onPress={() => props.action()}>
-        <CustomIcon name={props.name} style={styles.iconStyle} />
+        <MaterialCommunityIcons name={props.name} style={styles.iconStyle} />
       </TouchableOpacity>
       <Text style={styles.headerText}>{props.header}</Text>
       <View style={styles.emptyContainer}></View>
@@ -23,9 +23,9 @@ const AppHeader = (props: any) => {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
   },
   iconStyle: {
     color: COLORS.White,
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     flex: 1,
     fontFamily: FONTFAMILY.poppins_medium,
     fontSize: FONTSIZE.size_20,
-    textAlign: 'center',
+    textAlign: "center",
     color: COLORS.White,
   },
   emptyContainer: {
@@ -45,8 +45,8 @@ const styles = StyleSheet.create({
   iconBG: {
     height: SPACING.space_20 * 2,
     width: SPACING.space_20 * 2,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     borderRadius: BORDERRADIUS.radius_20,
     backgroundColor: COLORS.Orange,
   },
