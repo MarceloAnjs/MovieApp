@@ -20,4 +20,9 @@ export const styles = StyleSheet.create({
   centerContainer: {
     alignItems: "center",
   },
+  loadingContainer: {
+    flex: 1,
+    alignSelf: "center",
+    justifyContent: "center",
+  },
 });

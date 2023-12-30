@@ -1,7 +1,13 @@
 import React from "react";
-import { View, Dimensions, StatusBar, FlatList } from "react-native";
+import {
+  View,
+  Dimensions,
+  StatusBar,
+  FlatList,
+  ActivityIndicator,
+} from "react-native";
 import { styles } from "./styles";
-import { SPACING } from "../../theme/theme";
+import { COLORS, SPACING } from "../../theme/theme";
 import InputHeader from "../../components/InputHeader";
 import SubMovieCard from "../../components/SubMovieCard";
 import useSearchViewModel from "./index.model";
@@ -15,7 +21,6 @@ const SearchScreen = ({ navigation }: any) => {
   return (
     <View style={styles.container}>
       <StatusBar hidden />
-
       <View>
         <FlatList
           data={searchList}
