@@ -1,53 +1,25 @@
 import { MovieDetailsViewModel } from "./model";
-import {
-  baseImagePath,
-  movieCastDetails,
-  movieDetails,
-} from "../../api/apicalls";
-import { useEffect, useState } from "react";
+import { api, baseImagePath } from "../../api/apicalls";
+import { useQuery } from "@tanstack/react-query";
 
 const useMovieDetailsViewModel = (route: any): MovieDetailsViewModel => {
-  const [movieData, setMovieData] = useState<any>(undefined);
-  const [movieCastData, setmovieCastData] = useState<any>(undefined);
-
-  const getMovieDetails = async (movieid: number) => {
-    try {
-      let response = await fetch(movieDetails(movieid));
-      let json = await response.json();
-      return json;
-    } catch (error) {
-      console.error("Something Went wrong in getMoviesDetails Function", error);
+  const { data: movieCastData, isFetching: isFetchingmovieCastData } = useQuery(
+    {
+      queryKey: ["movieCastData"],
+      queryFn: () => api.getMovieCastDetails(route.params.movieid),
     }
-  };
+  );
 
-  const getMovieCastDetails = async (movieid: number) => {
-    try {
-      let response = await fetch(movieCastDetails(movieid));
-      let json = await response.json();
-      return json;
-    } catch (error) {
-      console.error(
-        "Something Went wrong in getMovieCastDetails Function",
-        error
-      );
-    }
-  };
-
-  useEffect(() => {
-    (async () => {
-      const tempMovieData = await getMovieDetails(route.params.movieid);
-      setMovieData(tempMovieData);
-    })();
-
-    (async () => {
-      const tempMovieCastData = await getMovieCastDetails(route.params.movieid);
-      setmovieCastData(tempMovieCastData.cast);
-    })();
-  }, []);
+  const { data: movieData, isFetching: isFetchingmovieData } = useQuery({
+    queryKey: ["movieData"],
+    queryFn: () => api.getMovieDetails(route.params.movieid),
+  });
 
   return {
     movieData,
     movieCastData,
+    isFetchingmovieCastData,
+    isFetchingmovieData,
     baseImagePath,
   };
 };

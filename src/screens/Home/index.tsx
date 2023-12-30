@@ -20,8 +20,11 @@ const { width } = Dimensions.get("window");
 const HomeScreen = ({ navigation }: any) => {
   const {
     nowPlayingMoviesList,
+    isFetchingNowPlayingMoviesList,
     popularMoviesList,
+    isFetchingPopularMoviesList,
     upcomingMoviesList,
+    isFetchingUpcomingMoviesList,
     baseImagePath,
   } = useHomeViewModel();
 
@@ -30,12 +33,9 @@ const HomeScreen = ({ navigation }: any) => {
   };
 
   if (
-    nowPlayingMoviesList == undefined &&
-    nowPlayingMoviesList == null &&
-    popularMoviesList == undefined &&
-    popularMoviesList == null &&
-    upcomingMoviesList == undefined &&
-    upcomingMoviesList == null
+    isFetchingNowPlayingMoviesList &&
+    isFetchingPopularMoviesList &&
+    isFetchingUpcomingMoviesList
   ) {
     return (
       <ScrollView

@@ -21,15 +21,15 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 
 const MovieDetailsScreen = ({ navigation, route }: any) => {
-  const { baseImagePath, movieCastData, movieData } =
-    useMovieDetailsViewModel(route);
+  const {
+    baseImagePath,
+    movieCastData,
+    movieData,
+    isFetchingmovieCastData,
+    isFetchingmovieData,
+  } = useMovieDetailsViewModel(route);
 
-  if (
-    movieData == undefined &&
-    movieData == null &&
-    movieCastData == undefined &&
-    movieCastData == null
-  ) {
+  if (isFetchingmovieData && isFetchingmovieCastData) {
     return (
       <ScrollView
         style={styles.container}

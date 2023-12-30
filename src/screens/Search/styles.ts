@@ -25,4 +25,7 @@ export const styles = StyleSheet.create({
     alignSelf: "center",
     justifyContent: "center",
   },
+  loading: {
+    alignSelf: "center",
+  },
 });

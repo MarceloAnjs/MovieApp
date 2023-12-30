@@ -1,78 +1,35 @@
 import { HomeViewModel } from "./model";
-import {
-  upcomingMovies,
-  nowPlayingMovies,
-  popularMovies,
-  baseImagePath,
-} from "../../api/apicalls";
-import { useEffect, useState } from "react";
+import { baseImagePath, api } from "../../api/apicalls";
+import { useQuery } from "@tanstack/react-query";
 
 const useHomeViewModel = (): HomeViewModel => {
-  const [nowPlayingMoviesList, setNowPlayingMoviesList] =
-    useState<any>(undefined);
-  const [popularMoviesList, setPopularMoviesList] = useState<any>(undefined);
-  const [upcomingMoviesList, setUpcomingMoviesList] = useState<any>(undefined);
+  const {
+    data: nowPlayingMoviesList,
+    isFetching: isFetchingNowPlayingMoviesList,
+  } = useQuery({
+    queryKey: ["NowPlayingMoviesList"],
+    queryFn: api.getNowPlayingMoviesList,
+  });
 
-  useEffect(() => {
-    (async () => {
-      let tempNowPlaying = await getNowPlayingMoviesList();
-      setNowPlayingMoviesList([
-        { id: "dummy1" },
-        ...tempNowPlaying.results,
-        { id: "dummy2" },
-      ]);
+  const { data: upcomingMoviesList, isFetching: isFetchingUpcomingMoviesList } =
+    useQuery({
+      queryKey: ["UpcomingMoviesList"],
+      queryFn: api.getUpcomingMoviesList,
+    });
 
-      let tempPopular = await getPopularMoviesList();
-      setPopularMoviesList(tempPopular.results);
-
-      let tempUpcoming = await getUpcomingMoviesList();
-      setUpcomingMoviesList(tempUpcoming.results);
-    })();
-  }, []);
-
-  const getNowPlayingMoviesList = async () => {
-    try {
-      let response = await fetch(nowPlayingMovies);
-      let json = await response.json();
-      return json;
-    } catch (error) {
-      console.error(
-        " Something went wrong in getNowPlayingMoviesList Function",
-        error
-      );
-    }
-  };
-
-  const getUpcomingMoviesList = async () => {
-    try {
-      let response = await fetch(upcomingMovies);
-      let json = await response.json();
-      return json;
-    } catch (error) {
-      console.error(
-        " Something went wrong in getUpcomingMoviesList Function",
-        error
-      );
-    }
-  };
-
-  const getPopularMoviesList = async () => {
-    try {
-      let response = await fetch(popularMovies);
-      let json = await response.json();
-      return json;
-    } catch (error) {
-      console.error(
-        " Something went wrong in getPopularMoviesList Function",
-        error
-      );
-    }
-  };
+  const { data: popularMoviesList, isFetching: isFetchingPopularMoviesList } =
+    useQuery({
+      queryKey: ["PopularMoviesList"],
+      queryFn: api.getPopularMoviesList,
+    });
 
   return {
     nowPlayingMoviesList,
+    isFetchingNowPlayingMoviesList,
     popularMoviesList,
+    isFetchingPopularMoviesList,
     upcomingMoviesList,
+    isFetchingUpcomingMoviesList,
     baseImagePath,
   };
 };

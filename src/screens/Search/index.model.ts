@@ -1,15 +1,18 @@
-import { baseImagePath, searchMovies } from "../../api/apicalls";
+import { api, baseImagePath } from "../../api/apicalls";
 import { useState } from "react";
 import { SearchViewModel } from "./model";
 
 const useSearchViewModel = (): SearchViewModel => {
   const [searchList, setSearchList] = useState([]);
+  const [isFetchingSearchList, setIsFetchingSearchList] = useState(false);
 
   const searchMoviesFunction = async (name: string) => {
+    setIsFetchingSearchList(true);
     try {
-      let response = await fetch(searchMovies(name));
-      let json = await response.json();
-      setSearchList(json.results);
+      await api.getSearchMoviesList(name).then((response) => {
+        setSearchList(response);
+        setIsFetchingSearchList(false);
+      });
     } catch (error) {
       console.error("Something went wrong in searchMoviesFunction ", error);
     }
@@ -19,6 +22,7 @@ const useSearchViewModel = (): SearchViewModel => {
     searchList,
     baseImagePath,
     searchMoviesFunction,
+    isFetchingSearchList,
   };
 };
 export default useSearchViewModel;
